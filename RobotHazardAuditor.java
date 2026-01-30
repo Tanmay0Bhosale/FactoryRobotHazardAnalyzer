@@ -1,9 +1,19 @@
 public class RobotHazardAuditor {
 
-    public double calculateHazardRisk(double armPrecision,
+    public double CalculateHazardRisk(double armPrecision,
                                       int workerDensity,
                                       String machineryState)
             throws RobotSafetyException {
+
+        if (armPrecision < 0.0 || armPrecision > 1.0) {
+            throw new RobotSafetyException(
+                    "Error: Arm precision must be 0.0-1.0");
+        }
+
+        if (workerDensity < 1 || workerDensity > 20) {
+            throw new RobotSafetyException(
+                    "Error: Worker density must be 1-20");
+        }
 
         double machineRiskFactor;
 
